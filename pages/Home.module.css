@@ -1,0 +1,19 @@
+#barWrapper {
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+}
+
+#main {
+    background-color: gray;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

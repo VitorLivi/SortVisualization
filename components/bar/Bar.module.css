@@ -1,0 +1,22 @@
+#bar {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 20px;
+    align-items: end;
+    height: 100%;
+    width: 100%;
+}
+
+.element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    background-color: white;
+    transition: 0.5s;
+    height: 0%;
+}
+
+.element h2 {
+    font-weight: bold;
+}
