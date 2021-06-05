@@ -5,7 +5,22 @@
     align-items: end;
     height: 100%;
     width: 100%;
+    transition: 0.1s;
 }
+
+#bar :hover {
+    z-index: 100;
+    transform: scale(1.2);
+    background-color: orangered;
+    box-shadow: orangered;
+    cursor: pointer;
+}
+
+#bar :hover h2 {
+    background-color: black;
+    padding: 10px;
+    color: white;
+} 
 
 .element {
     display: flex;

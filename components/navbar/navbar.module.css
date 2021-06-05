@@ -14,10 +14,15 @@
 }
 
 #navigation {
+    position: absolute;
     display: grid;
+    width: 100%;
     grid-auto-flow: column;
-    column-gap: 10px;
-    margin-left: 50px;
+    justify-content: center;
+    column-gap: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
 }
 
 #navigation span {
