@@ -11,16 +11,8 @@
 #bar :hover {
     z-index: 100;
     transform: scale(1.2);
-    background-color: orangered;
-    box-shadow: orangered;
     cursor: pointer;
 }
-
-#bar :hover h2 {
-    background-color: black;
-    padding: 10px;
-    color: white;
-} 
 
 .element {
     display: flex;

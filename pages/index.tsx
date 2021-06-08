@@ -23,8 +23,8 @@ const Home: React.FC = () => {
         minValue: 1
     }
 
-    const [maxValue , setMaxValue] = useState(0)
-    const [minValue , setMinValue] = useState(20)
+    const [maxValue , setMaxValue] = useState(20)
+    const [minValue , setMinValue] = useState(1)
     const [numberOfColumns , setNumberOfColumns] = useState(10)
     const [configuration, setConfiguration] = useState(ConfigurationHelpers.generateRandomConfiguration(10, 0, 0))
 

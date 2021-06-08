@@ -1,0 +1,12 @@
+export default {
+    sortType: {
+        BUBBLE_SORT: "BUBBLE_SORT",
+        SELECTION_SORT: "SELECTION_SORT",
+        INSERTION_SORT: "INSERTION_SORT", 
+        MERGE_SORT: "MERGE_SORT", 
+        QUICK_SORT: "QUICK_SORT",
+        RANDOM_QUICK_SORT: "RANDOM_QUICK_SORT",
+        COUNTING_SORT: "COUNTING_SORT",
+        RADIX_SORT: "RADIX_SORT"
+    }
+}
