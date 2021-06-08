@@ -4,7 +4,7 @@ import Styles from './navbar.module.css'
 function Navbar() {
     return (
         <div id={Styles.navbar}>
-            <h2>Sort Visualiazation</h2>
+            <h2>Sort Visualization</h2>
             <div id={Styles.navigation}>
                 <span>Bubble Sort</span>
                 <span>Selection Sort</span>
