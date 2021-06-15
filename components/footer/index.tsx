@@ -9,21 +9,27 @@ interface FooterProps {
 
 }
 
-const Footer: React.FC<FooterProps> = () => {
+interface ConsumerProps {
+    syncConfiguration: Function,
+    setMaxValue: Function,
+    setMinValue: Function,
+    maxValue: number,
+    minValue: number,
+    numberOfColumns: number,
+    setNumberOfColumns: Function
+}
 
-    const [numberOfColumns , setNumberOfColumns] = useState(10)
-    const [maxValue , setMaxValue] = useState(20)
-    const [minValue , setMinValue] = useState(-10)
+const Footer: React.FC<FooterProps> = () => {
 
     return (
         <ConfigurationContext.Consumer>
-            {({ setConfiguration } : { setConfiguration: Function }) => 
+            {(props : ConsumerProps) => 
                 <div id={Styles.footer}>
                     <div id={Styles.config}>
-                        <Input type='number' value={minValue} onChange={(e) => setMinValue(e.target.value)} label='Min value' />
-                        <Input type='number' value={maxValue} onChange={(e) => setMaxValue(e.target.value)} label='Max Value' />
-                        <Input type='number' value={numberOfColumns} onChange={(e) => setNumberOfColumns(e.target.value)} label='Number of columns' />
-                        <Button onClick={() => {setConfiguration({minValue: minValue, maxValue: maxValue, numberOfColumns: numberOfColumns})}} text='Display'/>
+                        <Input type='number' value={props.minValue} onChange={(e) => props.setMinValue(e.target.value)} label='Min value' />
+                        <Input type='number' value={props.maxValue} onChange={(e) => props.setMaxValue(e.target.value)} label='Max Value' />
+                        <Input type='number' value={props.numberOfColumns} onChange={(e) => props.setNumberOfColumns(e.target.value)} label='Number of columns' />
+                        <Button onClick={() => props.syncConfiguration()} text='Display'/>
                         <Button text='Sort'/>
                     </div>
                 </div>

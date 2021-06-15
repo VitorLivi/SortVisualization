@@ -24,16 +24,3 @@
     transform: translateX(-50%);
     top: 100px;
 }
-
-#navigation span {
-    font-size: 20px;
-    font-weight: bold;
-    color: lightgray;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#navigation span :hover {
-    color: limegreen;
-    transform: scale(1.05);
-}

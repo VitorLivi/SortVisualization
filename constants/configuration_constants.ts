@@ -1,5 +1,5 @@
 export default {
-    sortType: {
+    sortTypes: {
         BUBBLE_SORT: "BUBBLE_SORT",
         SELECTION_SORT: "SELECTION_SORT",
         INSERTION_SORT: "INSERTION_SORT", 

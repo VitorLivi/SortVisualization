@@ -17,37 +17,37 @@ export const ConfigurationContext: React.Context<any> = createContext({});
 
 const Home: React.FC = () => {
 
-    const initialConfiguration = {
-        numberOfColumns: 10, 
-        maxValue: 20, 
-        minValue: 1
-    }
-
     const [maxValue , setMaxValue] = useState(20)
     const [minValue , setMinValue] = useState(1)
     const [numberOfColumns , setNumberOfColumns] = useState(10)
     const [configuration, setConfiguration] = useState(ConfigurationHelpers.generateRandomConfiguration(10, 0, 0))
 
-    interface confPropsI {
-        minValue: number, 
-        maxValue: number, 
-        numberOfColumns: number
-    }
-
-    function handleConfiguration( { numberOfColumns, maxValue, minValue } : confPropsI ) {        
-        const newConfiguration = ConfigurationHelpers.generateRandomConfiguration(numberOfColumns, maxValue, minValue);
+    function handleConfiguration() {        
+        const newConfiguration = ConfigurationHelpers.generateRandomConfiguration(
+            numberOfColumns, 
+            maxValue, 
+            minValue
+        );
 
         setConfiguration(newConfiguration)
     }
 
     useEffect(() => {
-        handleConfiguration(initialConfiguration);
+        handleConfiguration();
     }, [])
 
+    const providerValues = {
+        syncConfiguration: handleConfiguration,
+        maxValue: maxValue,
+        minValue: minValue,
+        numberOfColumns: numberOfColumns,
+        setMaxValue: setMaxValue,
+        setMinValue: setMinValue,
+        setNumberOfColumns: setNumberOfColumns
+    }
+
     return (
-        <ConfigurationContext.Provider value={{
-            setConfiguration: handleConfiguration
-        }}>
+        <ConfigurationContext.Provider value={providerValues}>
             <div id={ Styles.main }>
                 <Navbar/>
                 <div id={ Styles.barWrapper }>

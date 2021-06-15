@@ -1,31 +1,41 @@
 import sortHelpers from '../helpers/sort_helpers'
-import { sortType } from '../constants/configuration_constants'
+import ConfigurationConstants from '../constants/configuration_constants'
+
+const { sortTypes } = ConfigurationConstants; 
 
 export default {
-    getArrayBySortType: {
-        [sortType.BUBBLE_SORT]: {
-            array: sortHelpers.bubbleSort()
+    sortTypeMapper: {
+        [sortTypes.BUBBLE_SORT]: {
+            function: sortHelpers.bubbleSort,
+            name: "Bubble Sort"
         },
-        [sortType.SELECTION_SORT]: {
-            array: sortHelpers.selectionSort()
+        [sortTypes.SELECTION_SORT]: {
+            function: sortHelpers.selectionSort,
+            name: "Selection Sort"
         },
-        [sortType.INSERTION_SORT]: {
-            array: sortHelpers.insertionSort()
+        [sortTypes.INSERTION_SORT]: {
+            function: sortHelpers.insertionSort,
+            name: "Insertion Sort"
         },
-        [sortType.MERGE_SORT]: {
-            array: sortHelpers.mergeSort()
+        [sortTypes.MERGE_SORT]: {
+            function: sortHelpers.mergeSort,
+            name: "Merge Sort"
         },
-        [sortType.QUICK_SORT]: {
-            array: sortHelpers.quickSort()
+        [sortTypes.QUICK_SORT]: {
+            function: sortHelpers.quickSort,
+            name: "Quick Sort"
         },
-        [sortType.RANDOM_QUICK_SORT]: {
-            array: sortHelpers.bubbleSort()
+        [sortTypes.RANDOM_QUICK_SORT]: {
+            function: sortHelpers.bubbleSort,
+            name: "Random Quick Sort"
         },
-        [sortType.COUNTING_SORT]: {
-            array: sortHelpers.bubbleSort()
+        [sortTypes.COUNTING_SORT]: {
+            function: sortHelpers.bubbleSort,
+            name: "Counting Sort"
         },
-        [sortType.RADIX_SORT]: {
-            array: sortHelpers.bubbleSort()
+        [sortTypes.RADIX_SORT]: {
+            function: sortHelpers.bubbleSort,
+            name: "Radix Sort"
         }
     }
 }
