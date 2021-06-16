@@ -1,45 +1,33 @@
 import React, { useState } from 'react'
 import Styles from './navbar.module.css'
 import SelectableItem from '../selectableitem'
-import configuration_constants from '../../constants/configuration_constants'
 import configuration_mapper from '../../mappers/configuration_mapper'
 
 interface NavbarProps {
-
+    setSelectedSort: Function,
+    selectableSorts: [{id: string, selected: boolean}],
+    setSelectableSorts: Function,
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
-
-    let [selectableItems, setSelectableItems] = useState(getInitialItemsData());
-
-    function getInitialItemsData() : Array<any> {
-        const sortTypesArray = Object.values(configuration_constants.sortTypes);
-
-        for (var i = 0; i < sortTypesArray.length; i++) {
-            sortTypesArray[i] = {
-                id: sortTypesArray[i],
-                selected: false
-            }
-        }
-
-        return sortTypesArray;
-    }
+const Navbar: React.FC<NavbarProps> = (props) => {
 
     function selectItem(id: string) {
-        for (var i = 0; i < selectableItems.length; i++) {
-            if (selectableItems[i].id === id){
-                selectableItems[i].selected = true;
+        const { setSelectedSort, selectableSorts, setSelectableSorts} = props
+        for (var i = 0; i < selectableSorts.length; i++) {
+            if (selectableSorts[i].id === id){
+                selectableSorts[i].selected = true
+                setSelectedSort(i)
             } else {
-                selectableItems[i].selected = false;
+                selectableSorts[i].selected = false
             }
         }
-        setSelectableItems([...selectableItems]);
+        setSelectableSorts([...selectableSorts])
     }
 
     function getSortTypeContent() {
         return (
             <div id={Styles.navigation}>
-                {selectableItems.map((e) => {
+                {props.selectableSorts.map((e) => {
                     return <SelectableItem id={e.id} key={e.id} selected={e.selected} onSelect={selectItem} text={configuration_mapper.sortTypeMapper[e.id].name} />
                 })}
             </div>

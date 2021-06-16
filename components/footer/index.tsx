@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../button'
 import Input from '../input'
 import Styles from './footer.module.css'
+
+import ConfigurationMapper from '../../mappers/configuration_mapper'
 
 import { ConfigurationContext } from '../../pages'
 
@@ -9,17 +11,33 @@ interface FooterProps {
 
 }
 
+interface SeletedSort {
+    id: string, 
+    selected: boolean
+}
+
 interface ConsumerProps {
+    setNumberOfColumns: Function,
     syncConfiguration: Function,
+    configuration: object[],
+    setConfiguration: Function,
     setMaxValue: Function,
     setMinValue: Function,
+    selectableSorts: [SeletedSort]
+    selectedSort: number,
     maxValue: number,
     minValue: number,
-    numberOfColumns: number,
-    setNumberOfColumns: Function
+    numberOfColumns: number
 }
 
 const Footer: React.FC<FooterProps> = () => {
+
+    function executeSortOperation(selectedSort : SeletedSort, configuration: [{value?: number, height?: number, index?: number}], setConfiguration: Function) {
+        const sortProperties = ConfigurationMapper.sortTypeMapper[selectedSort.id];
+        const newArray = [...sortProperties.function(configuration)];
+        
+        setConfiguration(newArray);
+    }
 
     return (
         <ConfigurationContext.Consumer>
@@ -30,7 +48,7 @@ const Footer: React.FC<FooterProps> = () => {
                         <Input type='number' value={props.maxValue} onChange={(e) => props.setMaxValue(e.target.value)} label='Max Value' />
                         <Input type='number' value={props.numberOfColumns} onChange={(e) => props.setNumberOfColumns(e.target.value)} label='Number of columns' />
                         <Button onClick={() => props.syncConfiguration()} text='Display'/>
-                        <Button text='Sort'/>
+                        <Button onClick={() => executeSortOperation(props.selectableSorts[props.selectedSort], props.configuration, props.setConfiguration)} text='Sort'/>
                     </div>
                 </div>
             }

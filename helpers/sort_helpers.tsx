@@ -1,10 +1,12 @@
-export default {
+interface Arr extends Array<{value?: number, height?: number, index?: number}> {};
 
-    bubbleSort: function (array: [] = []) {
+export default {    
+
+    bubbleSort: function (array: Arr = []) {
         let len = array.length;
         for (let i = 0; i < len; i++) {
             for (let j = 0; j < len; j++) {
-                if (array[j] > array[j + 1]) {
+                if ( (j + 1 < len) && array[j].value > array[j + 1].value) {
                     let tmp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = tmp;
