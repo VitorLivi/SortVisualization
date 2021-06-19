@@ -1,10 +1,14 @@
 #button {
     padding: 10px;
-    background-color: lightgray;
+    background-color: white;
+    color: gray;
+    border-top: 3px;
+    border-left: 5px;
+    border-color: gray;
     font-size: 20px;
     text-align: center;
     cursor: pointer;
     width: 100px;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 

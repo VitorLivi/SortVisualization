@@ -30,13 +30,11 @@ interface ConsumerProps {
     numberOfColumns: number
 }
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> =  () => {
 
-    function executeSortOperation(selectedSort : SeletedSort, configuration: [{value?: number, height?: number, index?: number}], setConfiguration: Function) {
+    async function executeSortOperation(selectedSort : SeletedSort, configuration: [{value?: number, height?: number, index?: number}], setConfiguration: Function) {
         const sortProperties = ConfigurationMapper.sortTypeMapper[selectedSort.id];
-        const newArray = [...sortProperties.function(configuration)];
-        
-        setConfiguration(newArray);
+        const newArray = [... await sortProperties.function(configuration)];
     }
 
     return (

@@ -3,11 +3,12 @@
     flex-direction: row;
     align-items: center;
     padding:10px;
-    background-color: black;
+    background-color: #87CEEB;
 }
 
 #navbar h2 {
     color: white;
+    font-weight: 800;
     margin-left: 10px;
     text-decoration: none;
     user-select: none;

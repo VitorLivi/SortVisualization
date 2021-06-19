@@ -8,24 +8,44 @@ interface BarProps {
 const Bar: React.FC<BarProps> = (props) => {
 
     const styleByValue = (value: number) => {
-        return value < 0 ? {backgroundColor: 'black', color: 'white'} : {backgroundColor: 'white', color: 'black'} 
+        return value < 0 ? {backgroundColor: 'lightgray', color: 'white'} : {backgroundColor: '#87CEEB', color: 'black'} 
     }
 
-    debugger;
+    const setInitialHeight = (element, config) => {
+        if (element != null) {
+            element.style.height = config.height + "%";
+        }
+    }
 
-    if (props.configuration.length > 0){
-        return (
-            <div id={Styles.bar}>
-                {props.configuration.map((e, i) => 
-                    <div key={e.index} ref={(el) => el != null ? el.style.height = e.height + "%" : null} style={{order: i, ...styleByValue(e.value)}} className={Styles.element}>
-                        <h2>{e.value}</h2>
-                    </div>
-                )}
-            </div>
-        )
-    } else {
+    const getBars = () => {
+        debugger;
+        if (props.configuration.length > 0){
+            return (
+                <React.Fragment>
+                    {props.configuration.map((config, index) => {
+                        return (
+                            <div 
+                                id={'bar' + config.index} 
+                                key={config.index} 
+                                ref={(element) => setInitialHeight(element, config)} 
+                                style={{order: config.index, ...styleByValue(config.value)}} 
+                                className={Styles.element}>
+                                <h2>{ config.value }</h2>
+                            </div>
+                        )
+                    })}
+                </React.Fragment>
+            )
+        }
+
         return null
     }
+    
+    return (
+        <div id={'bar'} className={Styles.bar}>
+            {getBars()}
+        </div>
+    )
 }
 
 export default Bar;

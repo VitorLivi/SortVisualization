@@ -1,4 +1,4 @@
-#bar {
+.bar {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -15,24 +15,24 @@
     border-radius: 8px;
 }
 
-#bar::-webkit-scrollbar {
+.bar::-webkit-scrollbar {
     width: 16px;
     height: 16px;
 }
-#bar::-webkit-scrollbar-thumb {
+.bar::-webkit-scrollbar-thumb {
     background: #cccccc;
     border-radius: 10px;
 }
-#bar::-webkit-scrollbar-thumb:hover{
+.bar::-webkit-scrollbar-thumb:hover{
     background: #666666;
 }
-#bar::-webkit-scrollbar-track{
+.bar::-webkit-scrollbar-track{
     background: #ffffff;
     border-radius: 8px;
     box-shadow: inset 7px 10px 12px #f0f0f0;
 }
 
-#bar :hover {
+.bar :hover {
     z-index: 100;
     transform: scale(1.05);
     cursor: pointer;
@@ -45,12 +45,12 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     min-width: 50px;
-    width: 50px;
-    background-color: white;
+    width: 50px;    
     transition: 0.5s;
     height: 0%;
 }
 
 .element h2 {
     font-weight: bold;
+    color: gray;
 }

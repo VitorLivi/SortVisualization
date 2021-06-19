@@ -19,7 +19,7 @@ export const ConfigurationContext: React.Context<any> = createContext({});
 const Home: React.FC = () => {
 
     const [maxValue , setMaxValue] = useState(20)
-    const [minValue , setMinValue] = useState(1)
+    const [minValue , setMinValue] = useState(-10)
     const [numberOfColumns , setNumberOfColumns] = useState(10)
     const [selectedSort , setSelectedSort] = useState(0)
     

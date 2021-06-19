@@ -1,7 +1,7 @@
 export default {
 
     generateRandomConfiguration: function (numberOfColumns: number = 10, maxValue: number = 10, minValue: number = 2) : [{value?: number, height?: number, index?: number}] {
-        let configuration: [{value?: number, height?: number, index?: number}] = [{}]
+        let configuration: [{value?: number, height?: number, index?: number}] = [];
 
         numberOfColumns = Number(numberOfColumns)
         maxValue = Number(maxValue)
@@ -14,11 +14,19 @@ export default {
                 let newColumnValue = Math.floor(Math.random() * (maxValue - minValue)) + minValue
                 const height = ( newColumnValue > 0 ? newColumnValue : newColumnValue * -1) * 100 / maxValue
 
-                configuration.push({
-                    index: i + 1,
-                    value: newColumnValue,
-                    height: height
-                });
+                if (i == 0) {
+                    configuration = [{
+                        index: i,
+                        value: newColumnValue,
+                        height: height
+                    }];
+                } else {
+                    configuration.push({
+                        index: i,
+                        value: newColumnValue,
+                        height: height
+                    });
+                }
             }
             return configuration;
         }
