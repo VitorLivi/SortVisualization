@@ -5,21 +5,16 @@ import Footer from '../components/footer'
 
 import Styles from './Home.module.css'
 
-import ConfigurationHelpers from '../helpers/configuration_helpers'
-import configuration_constants from '../constants/configuration_constants'
-
-interface ConfigurationContextI {
-    setMinValue: Function,
-    setMaxValue: Function,
-    setNumberOfColumns: Function
-}
+import ConfigurationHelpers from '../helpers/ConfigurationHelpers'
+import ConfigurationConstants from '../constants/ConfigurationConstants'
 
 export const ConfigurationContext: React.Context<any> = createContext({});
 
 const Home: React.FC = () => {
 
-    const [maxValue , setMaxValue] = useState(20)
-    const [minValue , setMinValue] = useState(-10)
+    const [maxValue, setMaxValue] = useState(20)
+    const [minValue, setMinValue] = useState(-10)
+    const [velocity, setVelocity] = useState(0.5)
     const [numberOfColumns , setNumberOfColumns] = useState(10)
     const [selectedSort , setSelectedSort] = useState(0)
     
@@ -37,7 +32,7 @@ const Home: React.FC = () => {
     }
 
     function getInitialItemsData() : Array<any> {
-        const sortTypesArray = Object.values(configuration_constants.sortTypes);
+        const sortTypesArray = Object.values(ConfigurationConstants.sortTypes);
 
         for (var i = 0; i < sortTypesArray.length; i++) {
             sortTypesArray[i] = {
@@ -54,16 +49,18 @@ const Home: React.FC = () => {
     }, [])
 
     const providerValues = {
-        syncConfiguration: handleConfiguration,
         configuration: configuration,
         maxValue: maxValue,
         minValue: minValue,
+        velocity: velocity,
         numberOfColumns: numberOfColumns,
-        selectedSort: selectedSort,
         selectableSorts: selectableSorts,
+        selectedSort: selectedSort,
         setMaxValue: setMaxValue,
         setMinValue: setMinValue,
+        setVelocity: setVelocity,
         setConfiguration: setConfiguration,
+        syncConfiguration: handleConfiguration,
         setNumberOfColumns: setNumberOfColumns
     }
 

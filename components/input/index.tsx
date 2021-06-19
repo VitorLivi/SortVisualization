@@ -1,10 +1,17 @@
 import React from 'react'
 import Styles from './Input.module.css'
 
-interface InputProps {
+interface InputProps extends HTMLInputElement {
     label?: string,
     ref?: React.Ref<any>
 }
+
+/**
+ * Input.
+ *
+ * @param {InputProps} props Input's props
+ * @returns {React.FC<InputProps>} Input.
+ */
 
 const Input: React.FC<InputProps> = (props) => {
 

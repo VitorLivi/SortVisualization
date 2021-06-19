@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Styles from './navbar.module.css'
 import SelectableItem from '../selectableitem'
-import configuration_mapper from '../../mappers/configuration_mapper'
+import ConfigurationMapper from '../../mappers/ConfigurationMapper'
 
 interface NavbarProps {
     setSelectedSort: Function,
@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         return (
             <div id={Styles.navigation}>
                 {props.selectableSorts.map((e) => {
-                    return <SelectableItem id={e.id} key={e.id} selected={e.selected} onSelect={selectItem} text={configuration_mapper.sortTypeMapper[e.id].name} />
+                    return <SelectableItem id={e.id} key={e.id} selected={e.selected} onSelect={selectItem} text={ConfigurationMapper.sortTypeMapper[e.id].name} />
                 })}
             </div>
             

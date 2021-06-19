@@ -14,6 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "mappers/ConfigurationMapper.js", "helpers/SortHelpers.js", "helpers/SharedHelpers.js", "helpers/ConfigurationHelpers.js", "constants/ConfigurationConstants.js"],
   "exclude": ["node_modules"]
 }

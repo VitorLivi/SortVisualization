@@ -1,18 +1,11 @@
-interface Arr extends Array<{value?: number, height?: number, index?: number}> {};
+import SharedHelpers from './SharedHelpers'
+
 
 export default {    
 
-    getElement: function (index) {
-        return document.getElementById("bar");
-    },
+    async bubbleSort (array, velocity)  {
 
-    async bubbleSort (array: Arr = [])  {
-       
-        const elements = document.getElementById("bar").children;
-        
-        const sleep = (ms) => {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+        const elements = document.getElementById('bar').children
 
         let len = array.length;
         
@@ -32,23 +25,23 @@ export default {
                     }
 
                     current.style.backgroundColor = '#009BFF'
-                    current.style.transition = "1s"
-                    current.children[0].style.color = "white"
+                    current.style.transition = velocity + 's'
+                    current.children[0].style.color = 'white'
                     next.style.backgroundColor = '#0070FF'
-                    next.style.transition = "1s"
-                    next.children[0].style.color = "white"
+                    next.style.transition = velocity + 's'
+                    next.children[0].style.color = 'white'
 
                     next.style.order = j;
                     current.style.order = j + 1;
 
-                    await sleep(1000)
+                    await SharedHelpers.sleep(velocity * 1000)
                     
                     current.style.backgroundColor = tempColor.current
-                    current.style.transition = "0.3s"
-                    current.children[0].style.color = "gray"
+                    current.style.transition = '0.3s'
+                    current.children[0].style.color = 'gray'
                     next.style.backgroundColor = tempColor.next
-                    next.style.transition = "0.3s"
-                    next.children[0].style.color = "gray"
+                    next.style.transition = '0.3s'
+                    next.children[0].style.color = 'gray'
                     
                     let tmpId = current.id
                     current.id = next.id
@@ -64,7 +57,7 @@ export default {
         return array;
     },
 
-    selectionSort: function (array: [] = []) {
+    selectionSort: function (array) {
         let n = array.length;
         
         for(let i = 0; i < n; i++) {
@@ -85,7 +78,7 @@ export default {
         return array;
     },
 
-    insertionSort: function (array: [] = []) {
+    insertionSort: function (array) {
         let n = array.length;
         for (let i = 1; i < n; i++) {
             // Choosing the first element in our unsorted subarray
@@ -101,7 +94,7 @@ export default {
         return array;
     },
 
-    mergeSort: function (leftArray: [] = [], rightArray: [] = []) {
+    mergeSort: function (leftArray, rightArray) {
         let arr = []
         while (leftArray.length && rightArray.length) {
             if (leftArray[0] < rightArray[0]) {
@@ -114,7 +107,7 @@ export default {
         return [ ...arr, ...leftArray, ...rightArray ]
     },
 
-    quickSort: function(array: [] = []) {
+    quickSort: function(array) {
         if (array.length <= 1) { 
             return array;
         } else {

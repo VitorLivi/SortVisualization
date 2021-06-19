@@ -18,7 +18,6 @@ const Bar: React.FC<BarProps> = (props) => {
     }
 
     const getBars = () => {
-        debugger;
         if (props.configuration.length > 0){
             return (
                 <React.Fragment>

@@ -1,5 +1,5 @@
-import sortHelpers from '../helpers/sort_helpers'
-import ConfigurationConstants from '../constants/configuration_constants'
+import sortHelpers from '../helpers/SortHelpers'
+import ConfigurationConstants from '../constants/ConfigurationConstants'
 
 const { sortTypes } = ConfigurationConstants; 
 
