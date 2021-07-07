@@ -1,54 +1,44 @@
-import SharedHelpers from './SharedHelpers'
+import sharedHelpers from './SharedHelpers'
 
+const { sleep, updateBarStyle } = sharedHelpers;
 
-export default {    
-
+export default {
     async bubbleSort (array, velocity)  {
 
-        const elements = document.getElementById('bar').children
-
         let len = array.length;
-        
+
         for (let i = 0; i < len; i++) {
             for (let j = 0; j < len; j++) {
                 if ( (j + 1 < len) && array[j].value > array[j + 1].value) {
                     let tmp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = tmp;
-                    
+
                     const current =  document.getElementById("bar" + j)
                     const next = document.getElementById("bar" + (j + 1))
+
+                    let tmpId = current.id
+                    current.id = next.id
+                    next.id = tmpId
 
                     const tempColor = {
                         current: current.style.backgroundColor,
                         next: next.style.backgroundColor
                     }
 
-                    current.style.backgroundColor = '#009BFF'
-                    current.style.transition = velocity + 's'
-                    current.children[0].style.color = 'white'
-                    next.style.backgroundColor = '#0070FF'
-                    next.style.transition = velocity + 's'
-                    next.children[0].style.color = 'white'
+                    updateBarStyle("before", current, next, velocity, tempColor);
 
                     next.style.order = j;
                     current.style.order = j + 1;
 
-                    await SharedHelpers.sleep(velocity * 1000)
-                    
-                    current.style.backgroundColor = tempColor.current
-                    current.style.transition = '0.3s'
-                    current.children[0].style.color = 'gray'
-                    next.style.backgroundColor = tempColor.next
-                    next.style.transition = '0.3s'
-                    next.children[0].style.color = 'gray'
-                    
-                    let tmpId = current.id
-                    current.id = next.id
-                    next.id = tmpId
+                    await sleep(velocity * 1000)
+
+                    updateBarStyle("after", current, next, velocity, tempColor);
                 }
             }
         }
+
+        const elements = document.getElementById("bar").children
 
         for (var i = 0; i < elements.length; i++) {
             elements[i].id = "bar"+ i;
@@ -57,9 +47,9 @@ export default {
         return array;
     },
 
-    selectionSort: function (array) {
+    selectionSort: function (array, velocity) {
         let n = array.length;
-        
+
         for(let i = 0; i < n; i++) {
             // Finding the smallest number in the subarray
             let min = i;
@@ -78,7 +68,7 @@ export default {
         return array;
     },
 
-    insertionSort: function (array) {
+    insertionSort: function (array, velocity) {
         let n = array.length;
         for (let i = 1; i < n; i++) {
             // Choosing the first element in our unsorted subarray
@@ -107,7 +97,7 @@ export default {
         return [ ...arr, ...leftArray, ...rightArray ]
     },
 
-    quickSort: function(array) {
+    quickSort: function(array, velocity) {
         if (array.length <= 1) { 
             return array;
         } else {

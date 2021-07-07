@@ -1,13 +1,12 @@
 export default {
-
-    generateRandomConfiguration: function (numberOfColumns: number = 10, maxValue: number = 10, minValue: number = 2) : [{value?: number, height?: number, index?: number}] {
-        let configuration: [{value?: number, height?: number, index?: number}] = [];
+    generateRandomConfiguration: function (numberOfColumns = 10, maxValue = 10, minValue = 2) {
+        let configuration = [];
 
         numberOfColumns = Number(numberOfColumns)
         maxValue = Number(maxValue)
         minValue = Number(minValue)
 
-        const everythingOk: Boolean = this.verifyConfigurationValues(numberOfColumns, maxValue, minValue)
+        const everythingOk = this.verifyConfigurationValues(numberOfColumns, maxValue, minValue)
 
         if (everythingOk) {
             for (var i = 0; i < numberOfColumns; i++) {
@@ -42,7 +41,7 @@ export default {
         return configuration
     },
 
-    verifyConfigurationValues: function (numberOfColumns: number, maxValue: number, minValue: number) {
+    verifyConfigurationValues: function (numberOfColumns, maxValue, minValue) {
 
         if (maxValue < minValue) {
             alert("The maximum value cannot be less than the minimum value.")

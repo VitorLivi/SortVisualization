@@ -51,6 +51,7 @@ const Footer: React.FC<FooterProps> =  () => {
     const executeSortOperation = async (selectedSort : SeletedSort, configuration: [{value?: number, height?: number, index?: number}], velocity: Number) => {
         const sortProperties = ConfigurationMapper.sortTypeMapper[selectedSort.id]
         executionHandler('before')
+        console.log(configuration)
         await sortProperties.function(configuration, velocity)
         executionHandler('after')
     }

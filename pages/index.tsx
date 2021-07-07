@@ -17,14 +17,14 @@ const Home: React.FC = () => {
     const [velocity, setVelocity] = useState(0.5)
     const [numberOfColumns , setNumberOfColumns] = useState(10)
     const [selectedSort , setSelectedSort] = useState(0)
-    
+
     let [configuration, setConfiguration] = useState(ConfigurationHelpers.generateRandomConfiguration(10, 0, 0))
     let [selectableSorts, setSelectableSorts] = useState(getInitialItemsData());
 
-    function handleConfiguration() {        
+    function handleConfiguration() {
         const newConfiguration = ConfigurationHelpers.generateRandomConfiguration(
-            numberOfColumns, 
-            maxValue, 
+            numberOfColumns,
+            maxValue,
             minValue
         );
 
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
                 selected: i == 0 ? true : false
             }
         }
-        
+
         return sortTypesArray;
     }
 
