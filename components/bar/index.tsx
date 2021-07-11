@@ -25,7 +25,6 @@ const Bar: React.FC<BarProps> = (props) => {
                         return (
                             <div 
                                 id={'bar' + config.index} 
-                                key={config.index} 
                                 ref={(element) => setInitialHeight(element, config)} 
                                 style={{order: config.index, ...styleByValue(config.value)}} 
                                 className={Styles.element}>

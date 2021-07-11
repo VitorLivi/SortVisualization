@@ -10,12 +10,16 @@ export default {
         for (let i = 0; i < len; i++) {
             for (let j = 0; j < len; j++) {
                 if ( (j + 1 < len) && array[j].value > array[j + 1].value) {
+
+                    const current =  document.getElementById("bar" + j)
+                    const next = document.getElementById("bar" + (j + 1))
+
                     let tmp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = tmp;
 
-                    const current =  document.getElementById("bar" + j)
-                    const next = document.getElementById("bar" + (j + 1))
+                    current.style.order = j + 1;
+                    next.style.order = j;
 
                     let tmpId = current.id
                     current.id = next.id
@@ -27,9 +31,6 @@ export default {
                     }
 
                     updateBarStyle("before", current, next, velocity, tempColor);
-
-                    next.style.order = j;
-                    current.style.order = j + 1;
 
                     await sleep(velocity * 1000)
 
@@ -55,14 +56,14 @@ export default {
             let min = i;
             for(let j = i+1; j < n; j++){
                 if(array[j] < array[min]) {
-                    min=j; 
+                    min=j;
                 }
              }
              if (min != i) {
                  // Swapping the elements
-                 let tmp = array[i]; 
+                 let tmp = array[i];
                  array[i] = array[min];
-                 array[min] = tmp;      
+                 array[min] = tmp;
             }
         }
         return array;
